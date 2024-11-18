@@ -130,7 +130,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Circle.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowRaylib.cpp" />
+    <ClCompile Include="WindowSDL.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowRaylib.h" />
+    <ClInclude Include="WindowSDL.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
