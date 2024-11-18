@@ -18,23 +18,11 @@ void WindowSDL::Init() {
 }
 
 void WindowSDL::CreateWindow() {
-	mWindow = SDL_CreateWindow(mTitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, mWidth, mHeight, SDL_WINDOW_SHOWN);
-	if (!mWindow) {
-		std::cout << "Error creating window: " << SDL_GetError() << std::endl;
-		system("pause");
-	}
+	mWindow = SDL_CreateWindow(mTitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+		mWidth, mHeight, SDL_WINDOW_SHOWN);
 
-	mWinSurface = SDL_GetWindowSurface(mWindow);
-	if (!mWinSurface) {
-		std::cout << "Error getting surface: " << SDL_GetError() << std::endl;
-		system("pause");
-	}
-
-	SDL_FillRect(mWinSurface, NULL, SDL_MapRGB(mWinSurface->format, 0, 255, 255));
-	// SDL_UpdateWindowSurface(mWindow);	
-	// system("pause");
-	// SDL_DestroyWindow(mWindow);
-	// SDL_Quit();
+	mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
+	SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
 }
 
 bool WindowSDL::IsWindowOpen() {
@@ -44,20 +32,15 @@ bool WindowSDL::IsWindowOpen() {
 	return true;
 }
 
-void WindowSDL::LoadSprite() {
-	SDL_Surface* imageTest = nullptr;
-	SDL_Surface* imageSurface = nullptr;
+void WindowSDL::RenderSprite(Sprite* sprite) {
+	SpriteSDL* sdlSprite = static_cast<SpriteSDL*>(sprite);
+	sdlSprite->Render(mRenderer);
+}
 
-	imageSurface = IMG_Load("test3.png");
-	imageTest = SDL_ConvertSurface(imageSurface, mWinSurface->format, 0);
-	if (!imageTest) {
-		std::cout << "Error loading image: " << SDL_GetError() << std::endl;
-	} else {
-		SDL_FreeSurface(imageSurface);
-		imageSurface = nullptr;
-	}
+void WindowSDL::Clear() {
+	SDL_RenderClear(mRenderer);
+}
 
-	SDL_BlitScaled(imageTest, NULL, mWinSurface, NULL);
-	SDL_UpdateWindowSurface(mWindow);	
-	system("pause");
+void WindowSDL::Present() {
+	SDL_RenderPresent(mRenderer);
 }

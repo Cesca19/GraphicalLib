@@ -1,9 +1,6 @@
 #pragma once
 #include "Window.h"
-
-#define SDL_MAIN_HANDLED
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include "SpriteSDL.h"
 
 class WindowSDL : public Window {
 public:
@@ -12,14 +9,19 @@ public:
 	void CreateWindow() override;
 	bool IsWindowOpen() override;
 
-	void LoadSprite() override;
+	void RenderSprite(Sprite* sprite) override;
+
+	void Clear() override;
+	void Present() override;
 
 
 private:
 	SDL_Surface* mWinSurface = nullptr;
 	SDL_Window* mWindow = nullptr;
+	SDL_Renderer* mRenderer = nullptr;
+	SDL_Texture* mTexture = nullptr;
 
 
-
+	
 };
 
