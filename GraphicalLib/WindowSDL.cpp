@@ -31,10 +31,10 @@ void WindowSDL::CreateWindow() {
 	}
 
 	SDL_FillRect(mWinSurface, NULL, SDL_MapRGB(mWinSurface->format, 0, 255, 255));
-	SDL_UpdateWindowSurface(mWindow);	
-	system("pause");
-	SDL_DestroyWindow(mWindow);
-	SDL_Quit();
+	// SDL_UpdateWindowSurface(mWindow);	
+	// system("pause");
+	// SDL_DestroyWindow(mWindow);
+	// SDL_Quit();
 }
 
 bool WindowSDL::IsWindowOpen() {
@@ -42,4 +42,22 @@ bool WindowSDL::IsWindowOpen() {
 		return false;
 	}
 	return true;
+}
+
+void WindowSDL::LoadSprite() {
+	SDL_Surface* imageTest = nullptr;
+	SDL_Surface* imageSurface = nullptr;
+
+	imageSurface = SDL_LoadBMP("test1.bmp");
+	imageTest = SDL_ConvertSurface(imageSurface, mWinSurface->format, 0);
+	if (!imageTest) {
+		std::cout << "Error loading image: " << SDL_GetError() << std::endl;
+	} else {
+		SDL_FreeSurface(imageSurface);
+		imageSurface = nullptr;
+	}
+
+	SDL_BlitScaled(imageTest, NULL, mWinSurface, NULL);
+	SDL_UpdateWindowSurface(mWindow);	
+	system("pause");
 }

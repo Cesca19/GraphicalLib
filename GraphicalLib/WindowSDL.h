@@ -11,9 +11,13 @@ public:
 	void CreateWindow() override;
 	bool IsWindowOpen() override;
 
+	void LoadSprite() override;
+
+
 private:
 	SDL_Surface* mWinSurface = nullptr;
 	SDL_Window* mWindow = nullptr;
+
 
 
 };
