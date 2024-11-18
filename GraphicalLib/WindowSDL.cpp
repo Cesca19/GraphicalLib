@@ -48,7 +48,7 @@ void WindowSDL::LoadSprite() {
 	SDL_Surface* imageTest = nullptr;
 	SDL_Surface* imageSurface = nullptr;
 
-	imageSurface = SDL_LoadBMP("test1.bmp");
+	imageSurface = IMG_Load("test3.png");
 	imageTest = SDL_ConvertSurface(imageSurface, mWinSurface->format, 0);
 	if (!imageTest) {
 		std::cout << "Error loading image: " << SDL_GetError() << std::endl;
