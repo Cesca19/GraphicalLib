@@ -8,7 +8,7 @@ public:
 	~Window();
 	virtual void Init() = 0;
 	virtual void CreateWindow() = 0;
-	virtual void IsWindowOpen() = 0;
+	virtual bool IsWindowOpen() = 0;
 
 };
 
