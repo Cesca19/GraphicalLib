@@ -1,4 +1,24 @@
 #pragma once
+#include <iostream>
+#include <string>
+#include <memory>
+#include <unordered_map>
+
+enum Colors {
+	T_GRAY,
+	T_YELLOW,
+	T_ORANGE,
+	T_PINK,
+	T_RED,
+	T_GREEN,
+	T_BLUE,
+	T_PURPLE,
+	T_BEIGE,
+	T_BROWN,
+	T_WHITE,
+	T_BLACK,
+	T_MAGENTA,
+};
 #include "Sprite.h"
 #include "headers.h"
 
@@ -7,12 +27,14 @@ class Window {
 
 public:
 	virtual void Init() = 0;
-	virtual void CreateWindow() = 0;
-	virtual bool IsWindowOpen() = 0;
-	virtual Sprite* CreateSprite(const char* filePath, const Vector2& position) = 0;
+	virtual void CreateWindow(int width, int height, std::string title) = 0;
+	virtual void Close() = 0;
+	virtual void StartDrawing() = 0;
+	virtual void ShowDrawing() = 0;
+	virtual void Clear(Colors color) = 0;
+	virtual Sprite* CreateSprite(const char* filePath, const Vector2f& position) = 0;
 	virtual void RenderSprite(Sprite* sprite) = 0;
-	virtual void Clear() = 0;
-	virtual void Present() = 0;
+
 	virtual bool ShouldClose() = 0;
 	virtual void PollEvents() = 0;
 	virtual void WaitFrame() = 0;

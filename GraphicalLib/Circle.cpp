@@ -5,11 +5,11 @@ Circle::Circle(Sprite* sprite, float speed)
     : sprite(sprite), speed(speed)
 {
     float angle = (rand() % 360) * 3.14159f / 180.0f;
-    velocity = Vector2(cos(angle) * speed, sin(angle) * speed);
+    velocity = Vector2f(cos(angle) * speed, sin(angle) * speed);
 }
 
 void Circle::Update(int windowWidth, int windowHeight) {
-    Vector2 position = sprite->GetPosition();
+    Vector2f position = sprite->GetPosition();
     position += velocity;
 
     if (position.x < 0 || position.x > windowWidth - sprite->GetSpriteSize()) {

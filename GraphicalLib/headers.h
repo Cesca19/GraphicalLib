@@ -9,19 +9,19 @@
 #include <iostream>
 #include <vector>
 
-struct Vector2 {
+struct Vector2f {
     float x;
     float y;
 
-    Vector2(float x_ = 0, float y_ = 0) : x(x_), y(y_) {}
+    Vector2f(float x_ = 0, float y_ = 0) : x(x_), y(y_) {}
 
-    Vector2 operator+=(const Vector2& other) {
+    Vector2f operator+=(const Vector2f& other) {
         x += other.x;
         y += other.y;
         return *this;
     }
 
-    Vector2 operator*(float scalar) const {
-        return Vector2(x * scalar, y * scalar);
+    Vector2f operator*(float scalar) const {
+        return Vector2f(x * scalar, y * scalar);
     }
 };

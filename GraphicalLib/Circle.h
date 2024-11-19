@@ -10,6 +10,6 @@ public:
 
 private:
     Sprite* sprite;
-    Vector2 velocity;
+    Vector2f velocity;
     float speed;
 };

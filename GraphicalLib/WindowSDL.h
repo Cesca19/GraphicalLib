@@ -7,11 +7,12 @@ public:
 	WindowSDL(const char* title, int width, int height);
 	~WindowSDL();
 	void Init() override;
-	void CreateWindow() override;
-	bool IsWindowOpen() override;
-	Sprite* CreateSprite(const char* filePath, const Vector2& position) override;
-	void Clear() override;
-	void Present() override;
+	void CreateWindow(int width, int height, std::string title) override;
+	Sprite* CreateSprite(const char* filePath, const Vector2f& position) override;
+	void Clear(Colors color) override;
+	void Close() override;
+	void ShowDrawing() override;
+	void StartDrawing()override;
 	void RenderSprite(Sprite* sprite) override;
 	bool ShouldClose() override;
 	void PollEvents() override;

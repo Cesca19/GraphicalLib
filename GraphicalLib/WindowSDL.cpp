@@ -4,10 +4,8 @@
 #include <ostream>
 
 
-WindowSDL::WindowSDL(const char* title, int width, int height) {
-	mTitle = title;
-	mWidth = width;
-	mHeight = height;
+WindowSDL::WindowSDL() 
+{
 }
 WindowSDL::~WindowSDL() {
 	if (mFont) {
@@ -32,7 +30,10 @@ void WindowSDL::Init() {
 	}
 }
 
-void WindowSDL::CreateWindow() {
+void WindowSDL::CreateWindow(int width, int height, std::string title) {
+	mTitle = title.c_str();
+	mWidth = width;
+	mHeight = height;
 	mWindow = SDL_CreateWindow(mTitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 		mWidth, mHeight, SDL_WINDOW_SHOWN);
 
@@ -40,14 +41,7 @@ void WindowSDL::CreateWindow() {
 	SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
 }
 
-bool WindowSDL::IsWindowOpen() {
-	if (!mWindow) {
-		return false;
-	}
-	return true;
-}
-
-Sprite* WindowSDL::CreateSprite(const char* filePath, const Vector2& position) {
+Sprite* WindowSDL::CreateSprite(const char* filePath, const Vector2f& position) {
 	SpriteSDL* sprite = new SpriteSDL(mRenderer);
 	sprite->LoadImage(filePath);
 	sprite->SetPosition(position);
@@ -55,12 +49,20 @@ Sprite* WindowSDL::CreateSprite(const char* filePath, const Vector2& position) {
 }
 
 
-void WindowSDL::Clear() {
+void WindowSDL::Clear(Colors color) {
 	SDL_RenderClear(mRenderer);
 }
 
-void WindowSDL::Present() {
+void WindowSDL::Close()
+{
+}
+
+void WindowSDL::ShowDrawing() {
 	SDL_RenderPresent(mRenderer);
+}
+
+void WindowSDL::StartDrawing()
+{
 }
 
 void WindowSDL::RenderSprite(Sprite* sprite) {
