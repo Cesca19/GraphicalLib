@@ -18,6 +18,16 @@ void Circle::SetColor(Colors color)
     _color = color;
 }
 
+float Circle::GetRadius()
+{
+    return _radius;
+}
+
+Vector2f Circle::GetPosition()
+{
+    return _position;
+}
+
 void Circle::SetRadius(float radius)
 {
     _radius = radius;

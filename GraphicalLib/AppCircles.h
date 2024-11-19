@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Struct.h"
+#include "CircleAnimated.h"
 #include "WindowSDL.h"
 #include "WindowRaylib.h"
 
@@ -18,6 +19,7 @@ private:
 	int _height;
 	std::string _title;
 	int _circlesNb;
-	std::vector<Circle *> _circles;
+	std::vector<Circle*> _circles;
+	std::vector<CircleAnimated*> _movingCircles;
 };
 

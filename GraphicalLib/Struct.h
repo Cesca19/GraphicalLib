@@ -37,7 +37,7 @@ enum Colors {
 	T_PURPLE,
 	T_BEIGE,
 	T_BROWN,
-	T_WHITE,
 	T_BLACK,
 	T_MAGENTA,
+	T_WHITE,
 };
