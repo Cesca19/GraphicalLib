@@ -16,7 +16,7 @@ int main(int argc, char** args) {
 		float randX = rand() % (window->GetWidth());
 		float randY = rand() % (window->GetHeight());
 		auto sprite = window->CreateSprite("test-sprite.png", Vector2(randX, randY));
-		circles.push_back(new Circle(sprite));
+		circles.push_back(new Circle(sprite, 6.0f));
 	}
 
 	while (!window->ShouldClose()) {
