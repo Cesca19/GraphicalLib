@@ -28,6 +28,7 @@ int main(int argc, char** args) {
 			window->RenderSprite(circle->GetSprite());
 		}
 
+		window->DrawFPS();
 		window->Present();
 		window->WaitFrame();
 	}

@@ -17,6 +17,8 @@ public:
 	virtual void PollEvents() = 0;
 	virtual void WaitFrame() = 0;
 	virtual void SetTargetFps(int fps) = 0;
+	virtual void DrawFPS() = 0;
+	virtual float GetFPS() const = 0;
 
 	int GetWidth() const { return mWidth; }
 	int GetHeight() const { return mHeight; }
@@ -25,6 +27,9 @@ protected:
 	const char* mTitle;
 	int mWidth;
 	int mHeight;
+	float mCurrentFPS = 0;
+	Uint32 mLastTime = 0;
+	int mFrameCount = 0;
 
 };
 
