@@ -11,31 +11,27 @@ int main(int argc, char** args) {
 	std::vector<Circle*> circles;
 	const int NUM_CIRCLES = 5;
 
-	for(int i = 0; i < NUM_CIRCLES; i++) {
-		float randX = rand() % (1280 - 64);
-		float randY = rand() % (720 - 64);
-		circles.push_back(new Circle(window, randX, randY));
+	for (int i = 0; i < NUM_CIRCLES; i++) {
+		float randX = rand() % (window->GetWidth());
+		float randY = rand() % (window->GetHeight());
+		auto sprite = window->CreateSprite("test-sprite.png", Vector2(randX, randY));
+		circles.push_back(new Circle(sprite));
 	}
 
-	bool running = true;
-	SDL_Event event;
-	while (running) {
-		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_QUIT)
-				running = false;
-		}
+	while (!window->ShouldClose()) {
+		window->PollEvents();
 
 		window->Clear();
-		for(auto circle : circles) {
-			circle->Update(1280, 720);
-			window->RenderSprite(circle->sprite);
+		for (auto circle : circles) {
+			circle->Update(window->GetWidth(), window->GetHeight());
+			window->RenderSprite(circle->GetSprite());
 		}
+
 		window->Present();
-		SDL_Delay(16);
 	}
 
-	for(auto circle : circles) {
-		delete circle->sprite;
+	for (auto circle : circles) {
+		delete circle->GetSprite();
 		delete circle;
 	}
 	delete window;

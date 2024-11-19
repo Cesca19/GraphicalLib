@@ -2,21 +2,22 @@
 #include "headers.h"
 
 class Sprite {
-
 public:
     virtual ~Sprite() = default;
     virtual void LoadImage(const char* filePath) = 0;
     virtual void* GetData() = 0;
-    virtual void Update(int windowWidth, int windowHeight);
-    virtual void Render(SDL_Renderer* renderer) = 0;
 
-    void SetPosition(float newX, float newY);
-    void SetVelocity(float newDx, float newDy);
-    float GetX() const { return mX; }
-    float GetY() const { return mY; }
+    void SetPosition(const Vector2& newPos) { mPosition = newPos; }
+    void SetVelocity(const Vector2& newVel) { mVelocity = newVel; }
+
+    float GetX() const { return mPosition.x; }
+    float GetY() const { return mPosition.y; }
+    const Vector2& GetPosition() const { return mPosition; }
+    const Vector2& GetVelocity() const { return mVelocity; }
+    const char* GetFilePath() const { return mFilePath; }
 
 protected:
-    float mX, mY;
-    float mDx, mDy;
+    Vector2 mPosition;
+    Vector2 mVelocity;
+    const char* mFilePath;
 };
-

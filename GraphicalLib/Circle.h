@@ -4,13 +4,12 @@
 
 class Circle {
 public:
-    Circle(Window* window, float startX, float startY);
+    Circle(Sprite* sprite, float speed = 5.0f);
     void Update(int windowWidth, int windowHeight);
-    
-public:
-    float x, y;           // Position
-    float dx, dy;         // Direction
-    float speed = 5.0f;   // Movement speed
-    Sprite* sprite;
-};
+    Sprite* GetSprite() const { return sprite; }
 
+private:
+    Sprite* sprite;
+    Vector2 velocity;
+    float speed;
+};

@@ -1,32 +1,25 @@
 #include "Circle.h"
-
 #include "SpriteSDL.h"
 
-Circle::Circle(Window* window, float startX, float startY) {
-    sprite = new SpriteSDL();
-    sprite->LoadImage("test-sprite.png");
-    x = startX;
-    y = startY;
-        
-    // Random direction
+Circle::Circle(Sprite* sprite, float speed)
+    : sprite(sprite), speed(speed)
+{
     float angle = (rand() % 360) * 3.14159f / 180.0f;
-    dx = cos(angle) * speed;
-    dy = sin(angle) * speed;
+    velocity = Vector2(cos(angle) * speed, sin(angle) * speed);
 }
 
 void Circle::Update(int windowWidth, int windowHeight) {
-    x += dx;
-    y += dy;
+    Vector2 position = sprite->GetPosition();
+    position += velocity;
 
-    // Bounce off walls
-    if (x < 0 || x > windowWidth - sprite->GetX()) {
-        dx = -dx;
-        x = std::max(0.0f, std::min(float(windowWidth - sprite->GetX()), x));
+    if (position.x < 0 || position.x > windowWidth - sprite->GetX()) {
+        velocity.x = -velocity.x;
+        position.x = std::max(0.0f, std::min(float(windowWidth - sprite->GetX()), position.x));
     }
-    if (y < 0 || y > windowHeight - sprite->GetY()) {
-        dy = -dy;
-        y = std::max(0.0f, std::min(float(windowHeight - sprite->GetY()), y));
+    if (position.y < 0 || position.y > windowHeight - sprite->GetY()) {
+        velocity.y = -velocity.y;
+        position.y = std::max(0.0f, std::min(float(windowHeight - sprite->GetY()), position.y));
     }
 
-    sprite->SetPosition(x, y);
+    sprite->SetPosition(position);
 }
