@@ -1,5 +1,23 @@
-// Example Program
+#include "WindowRaylib.h"
 
+int main(void)
+{
+	std::shared_ptr<Window> window(new WindowRaylib());
+
+	window->Init();
+	window->CreateWindow(800, 450, "GRAPHICAL LIB");
+	while (!window->IsWindowOpen())
+	{
+		window->StartDrawing();
+		window->Clear(T_ORANGE);
+		//DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+		window->StopDrawing();
+	}
+	window->Close();
+	return 0;
+}
+
+/*
 #include <iostream>
 #define SDL_MAIN_HANDLED
 
@@ -60,4 +78,4 @@ int main(int argc, char** args) {
 
 	// End the program
 	return 0;
-}
+}*/
