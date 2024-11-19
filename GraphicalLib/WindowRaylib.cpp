@@ -22,12 +22,37 @@ void WindowRaylib::Init()
 
 void WindowRaylib::CreateWindow(int width, int height, std::string title)
 {
+	mTitle = title.c_str();
+	mWidth = width;
+	mHeight = height;
 	InitWindow(width, height, title.c_str());
 }
 
-bool WindowRaylib::IsWindowOpen()
+Sprite* WindowRaylib::CreateSprite(const char* filePath, const Vector2f& position)
+{
+	return nullptr;
+}
+
+void WindowRaylib::RenderSprite(Sprite* sprite)
+{
+}
+
+bool WindowRaylib::ShouldClose()
 {
 	return WindowShouldClose();
+}
+
+void WindowRaylib::PollEvents()
+{
+}
+
+void WindowRaylib::WaitFrame()
+{
+}
+
+void WindowRaylib::SetTargetFps(int fps)
+{
+	SetTargetFPS(fps);
 }
 
 void WindowRaylib::Close()
@@ -40,7 +65,7 @@ void WindowRaylib::StartDrawing()
 	BeginDrawing();
 }
 
-void WindowRaylib::StopDrawing()
+void WindowRaylib::ShowDrawing()
 {
 	EndDrawing();
 }

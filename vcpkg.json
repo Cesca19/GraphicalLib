@@ -1,6 +1,7 @@
 {
   "dependencies": [
+    "raylib",
     "sdl2",
-    "raylib"
+    "sdl2-image"
   ]
 }
