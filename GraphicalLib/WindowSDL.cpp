@@ -33,7 +33,7 @@ bool WindowSDL::IsWindowOpen() {
 }
 
 Sprite* WindowSDL::CreateSprite(const char* filePath, const Vector2& position) {
-	SpriteSDL* sprite = new SpriteSDL();
+	SpriteSDL* sprite = new SpriteSDL(mRenderer);
 	sprite->LoadImage(filePath);
 	sprite->SetPosition(position);
 	return sprite;
@@ -49,8 +49,8 @@ void WindowSDL::Present() {
 }
 
 void WindowSDL::RenderSprite(Sprite* sprite) {
-	auto sdlSprite = static_cast<SpriteSDL*>(sprite);
-	SDL_Texture* texture = GetOrCreateTexture(sdlSprite);
+	//auto sdlSprite = static_cast<SpriteSDL*>(sprite);
+	SDL_Texture* texture = static_cast<SDL_Texture*>(sprite->GetData());
 
 	if (texture) {
 		SDL_Rect destRect = {
@@ -82,19 +82,4 @@ void WindowSDL::WaitFrame() {
 
 void WindowSDL::SetTargetFps(int fps) {
 	mTargetFrameTime = 1000 / fps;
-}
-
-SDL_Texture* WindowSDL::GetOrCreateTexture(SpriteSDL* sprite) {
-	SDL_Texture* texture = sprite->GetTexture();
-
-	if (!texture) {
-		SDL_Surface* tempSurface = IMG_Load(sprite->GetFilePath());
-		if (tempSurface) {
-			texture = SDL_CreateTextureFromSurface(mRenderer, tempSurface);
-			SDL_FreeSurface(tempSurface);
-			sprite->SetTexture(texture);  
-		}
-	}
-
-	return texture;
 }

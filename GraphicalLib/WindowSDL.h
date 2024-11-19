@@ -18,14 +18,12 @@ public:
 	void SetTargetFps(int fps) override;
 
 private:
-	SDL_Surface* mWinSurface = nullptr;
-	SDL_Window* mWindow = nullptr;
-	SDL_Renderer* mRenderer = nullptr;
-	SDL_Texture* mTexture = nullptr;
 	bool mShouldClose = false;
 	int mTargetFrameTime;
 
-	SDL_Texture* GetOrCreateTexture(SpriteSDL* sprite);
+	SDL_Surface* mWinSurface = nullptr;
+	SDL_Window* mWindow = nullptr;
+	SDL_Renderer* mRenderer = nullptr;
 	
 };
 
