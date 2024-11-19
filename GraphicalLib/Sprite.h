@@ -6,6 +6,7 @@ public:
     virtual ~Sprite() = default;
     virtual void LoadImage(const char* filePath) = 0;
     virtual void* GetData() = 0;
+    virtual void Draw() = 0;
 
     void SetPosition(const Vector2f& newPos) { mPosition = newPos; }
     void SetVelocity(const Vector2f& newVel) { mVelocity = newVel; }

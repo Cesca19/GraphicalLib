@@ -6,6 +6,7 @@ public:
     SpriteSDL(SDL_Renderer* renderer);
     virtual ~SpriteSDL();
     void LoadImage(const char* filePath) override;
+    void Draw() override;
     void* GetData() override;
 
     int GetWidth() const { return mSurface ? mSurface->w : 0; }

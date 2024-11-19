@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include "SpriteRaylib.h"
 #include "CircleRaylib.h"
 #include <raylib.h>
 

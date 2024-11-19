@@ -24,6 +24,10 @@ void SpriteSDL::LoadImage(const char* filePath) {
     }
 }
 
+void SpriteSDL::Draw()
+{
+}
+
 void* SpriteSDL::GetData() {
     return mTexture;
 }

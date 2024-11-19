@@ -30,7 +30,10 @@ void WindowRaylib::CreateWindow(int width, int height, std::string title)
 
 Sprite* WindowRaylib::CreateSprite(const char* filePath, const Vector2f& position)
 {
-	return nullptr;
+	Sprite* sprite = new SpriteRaylib();
+	sprite->LoadImage(filePath);
+	sprite->SetPosition(position);
+	return sprite;
 }
 
 Circle* WindowRaylib::CreateCircle(Vector2f position, float radius, Colors color)
