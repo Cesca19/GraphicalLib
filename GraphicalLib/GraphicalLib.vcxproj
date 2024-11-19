@@ -135,20 +135,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="CircleRaylib.cpp" />
+    <ClCompile Include="CircleSdl.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteRaylib.cpp" />
     <ClCompile Include="SpriteSDL.cpp" />
-    <ClCompile Include="Window.cpp" />
     <ClCompile Include="WindowRaylib.cpp" />
     <ClCompile Include="WindowSDL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="CircleRaylib.h" />
+    <ClInclude Include="CircleSdl.h" />
     <ClInclude Include="headers.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRaylib.h" />
     <ClInclude Include="SpriteSDL.h" />
+    <ClInclude Include="Struct.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowRaylib.h" />
     <ClInclude Include="WindowSDL.h" />

@@ -48,6 +48,11 @@ Sprite* WindowSDL::CreateSprite(const char* filePath, const Vector2f& position) 
 	return sprite;
 }
 
+Circle* WindowSDL::CreateCircle(Vector2f position, float radius, Colors color)
+{
+	return nullptr;
+}
+
 
 void WindowSDL::Clear(Colors color) {
 	SDL_RenderClear(mRenderer);
@@ -112,7 +117,7 @@ void WindowSDL::UpdateFPS() {
 	}
 }
 
-void WindowSDL::DrawFPS() {
+void WindowSDL::DrawFps() {
 	UpdateFPS();
 
 	SDL_Color textColor = { 0, 0, 0, 255 }; // Black color

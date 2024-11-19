@@ -9,6 +9,7 @@ public:
 	void Init() override;
 	void CreateWindow(int width, int height, std::string title) override;
 	Sprite* CreateSprite(const char* filePath, const Vector2f& position) override;
+	Circle* CreateCircle(Vector2f position, float radius, Colors color) override;
 	void Clear(Colors color) override;
 	void Close() override;
 	void ShowDrawing() override;
@@ -18,8 +19,8 @@ public:
 	void PollEvents() override;
 	void WaitFrame() override;
 	void SetTargetFps(int fps) override;
-	void DrawFPS() override;
-	float GetFPS() const override { return mCurrentFPS; }
+	void DrawFps() override;
+	float GetFps() override { return mCurrentFPS; }
 
 private:
 	bool mShouldClose = false;

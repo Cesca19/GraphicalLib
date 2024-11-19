@@ -33,6 +33,11 @@ Sprite* WindowRaylib::CreateSprite(const char* filePath, const Vector2f& positio
 	return nullptr;
 }
 
+Circle* WindowRaylib::CreateCircle(Vector2f position, float radius, Colors color)
+{
+	return new CircleRaylib(position, radius, color);
+}
+
 void WindowRaylib::RenderSprite(Sprite* sprite)
 {
 }
@@ -53,6 +58,16 @@ void WindowRaylib::WaitFrame()
 void WindowRaylib::SetTargetFps(int fps)
 {
 	SetTargetFPS(fps);
+}
+
+void WindowRaylib::DrawFps()
+{
+	DrawFPS(10, 10);
+}
+
+float WindowRaylib::GetFps()
+{
+	return GetFps();
 }
 
 void WindowRaylib::Close()
