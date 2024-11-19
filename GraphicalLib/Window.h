@@ -15,6 +15,8 @@ public:
 	virtual void Present() = 0;
 	virtual bool ShouldClose() = 0;
 	virtual void PollEvents() = 0;
+	virtual void WaitFrame() = 0;
+	virtual void SetTargetFps(int fps) = 0;
 
 	int GetWidth() const { return mWidth; }
 	int GetHeight() const { return mHeight; }

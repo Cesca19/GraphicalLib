@@ -7,6 +7,7 @@ int main(int argc, char** args) {
 	Window* window = new WindowSDL("Window", 1280, 720);
 	window->Init();
 	window->CreateWindow();
+	window->SetTargetFps(60);
    
 	std::vector<Circle*> circles;
 	const int NUM_CIRCLES = 5;
@@ -28,6 +29,7 @@ int main(int argc, char** args) {
 		}
 
 		window->Present();
+		window->WaitFrame();
 	}
 
 	for (auto circle : circles) {

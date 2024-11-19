@@ -76,6 +76,14 @@ void WindowSDL::PollEvents() {
 	}
 }
 
+void WindowSDL::WaitFrame() {
+	SDL_Delay(mTargetFrameTime);
+}
+
+void WindowSDL::SetTargetFps(int fps) {
+	mTargetFrameTime = 1000 / fps;
+}
+
 SDL_Texture* WindowSDL::GetOrCreateTexture(SpriteSDL* sprite) {
 	SDL_Texture* texture = sprite->GetTexture();
 

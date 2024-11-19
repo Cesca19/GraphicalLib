@@ -14,6 +14,8 @@ public:
 	void RenderSprite(Sprite* sprite) override;
 	bool ShouldClose() override;
 	void PollEvents() override;
+	void WaitFrame() override;
+	void SetTargetFps(int fps) override;
 
 private:
 	SDL_Surface* mWinSurface = nullptr;
@@ -21,6 +23,7 @@ private:
 	SDL_Renderer* mRenderer = nullptr;
 	SDL_Texture* mTexture = nullptr;
 	bool mShouldClose = false;
+	int mTargetFrameTime;
 
 	SDL_Texture* GetOrCreateTexture(SpriteSDL* sprite);
 	
