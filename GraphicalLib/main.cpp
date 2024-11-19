@@ -31,7 +31,6 @@ int main(int argc, char** args) {
 		}*/
 
 		window->DrawFPS();
-		window->Present();
 		window->ShowDrawing();
 		window->WaitFrame();
 	}
