@@ -33,6 +33,11 @@ Sprite* WindowRaylib::CreateSprite(const char* filePath, const Vector2f& positio
 	return nullptr;
 }
 
+Circle* WindowRaylib::CreateCircle(Vector2f position, float radius, Colors color)
+{
+	return new CircleRaylib(position, radius, color);
+}
+
 void WindowRaylib::RenderSprite(Sprite* sprite)
 {
 }

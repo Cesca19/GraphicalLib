@@ -1,6 +1,30 @@
 #include "Circle.h"
-#include "SpriteSDL.h"
 
+Circle::Circle(Vector2f position, float radius, Colors color) : _position(position), _radius(radius), _color(color)
+{
+}
+
+Circle::~Circle()
+{
+}
+
+void Circle::SetPosition(Vector2f position)
+{
+    _position = position;
+}
+
+void Circle::SetColor(Colors color)
+{
+    _color = color;
+}
+
+void Circle::SetRadius(float radius)
+{
+    _radius = radius;
+}
+
+
+/*
 Circle::Circle(Sprite* sprite, float speed)
     : sprite(sprite), speed(speed)
 {
@@ -23,3 +47,7 @@ void Circle::Update(int windowWidth, int windowHeight) {
 
     sprite->SetPosition(position);
 }
+
+Circle::Circle(Vector2f position, float radius, Colors color)
+{
+}*/
