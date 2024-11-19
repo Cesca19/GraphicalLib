@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AppCircles.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleRaylib.cpp" />
     <ClCompile Include="CircleSdl.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="WindowSDL.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppCircles.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CircleRaylib.h" />
     <ClInclude Include="CircleSdl.h" />

@@ -21,6 +21,11 @@ struct Vector2f {
     }
 };
 
+enum DisplayMode {
+	RAYLIB,
+	SDL,
+};
+
 enum Colors {
 	T_GRAY,
 	T_YELLOW,
