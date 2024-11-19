@@ -56,8 +56,8 @@ void WindowSDL::RenderSprite(Sprite* sprite) {
 		SDL_Rect destRect = {
 			static_cast<int>(sprite->GetX()),
 			static_cast<int>(sprite->GetY()),
-			64,
-			64 
+			sprite->GetSpriteSize(),
+			sprite->GetSpriteSize()
 		};
 
 		SDL_RenderCopy(mRenderer, texture, NULL, &destRect);

@@ -12,13 +12,13 @@ void Circle::Update(int windowWidth, int windowHeight) {
     Vector2 position = sprite->GetPosition();
     position += velocity;
 
-    if (position.x < 0 || position.x > windowWidth - sprite->GetX()) {
+    if (position.x < 0 || position.x > windowWidth - sprite->GetSpriteSize()) {
         velocity.x = -velocity.x;
-        position.x = std::max(0.0f, std::min(float(windowWidth - sprite->GetX()), position.x));
+        position.x = std::max(0.0f, std::min(float(windowWidth - sprite->GetSpriteSize()), position.x));
     }
-    if (position.y < 0 || position.y > windowHeight - sprite->GetY()) {
+    if (position.y < 0 || position.y > windowHeight - sprite->GetSpriteSize()) {
         velocity.y = -velocity.y;
-        position.y = std::max(0.0f, std::min(float(windowHeight - sprite->GetY()), position.y));
+        position.y = std::max(0.0f, std::min(float(windowHeight - sprite->GetSpriteSize()), position.y));
     }
 
     sprite->SetPosition(position);
