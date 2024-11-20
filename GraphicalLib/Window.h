@@ -14,7 +14,7 @@ public:
 	virtual void Clear(Colors color) = 0;
 
 	virtual bool ShouldClose() = 0;
-	virtual void PollEvents() = 0;
+	virtual Event_t PollEvents(Key_t& key) = 0;
 	virtual void WaitFrame() = 0;
 	virtual void SetTargetFps(int fps) = 0;
 	virtual void DrawFps() = 0;

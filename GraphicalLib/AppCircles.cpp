@@ -47,16 +47,22 @@ void AppCircles::Init(int witdh, int heigth, std::string title, int circlesNb)
 void AppCircles::Run()
 {
 	Sprite* sprite = _window->CreateSprite("../Ressources/apple.png", (500, 300));
+	Key_t key = Key_NONE;
 
 	while (!_window->ShouldClose()) {
 		_window->StartDrawing();
 
-		_window->PollEvents();
+		_window->PollEvents(key);
 		_window->Clear(T_WHITE);
 		_window->DrawFps();
+
 		_map->Draw();
 
 		for (int i = 0; i < _circles.size(); i++) {
+			if (key == Key_SPACE) {
+				_movingCircles[i]->ChangeDirection();
+				_circles[i]->SetColor((Colors)(rand() % 11));
+			}
 			_movingCircles[i]->Update();
 			_circles[i]->Draw();
 		}

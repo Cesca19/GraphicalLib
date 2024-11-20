@@ -13,6 +13,39 @@ WindowSDL::WindowSDL() {
 	_colorsMap[T_BROWN] = { 165, 42, 42, 255 };
 	_colorsMap[T_WHITE] = { 255, 255, 255, 255 };
 	_colorsMap[T_BLACK] = { 0, 0, 0, 255 };
+
+	_keyMap[SDLK_UNKNOWN] = Key_NONE;
+	_keyMap[SDLK_a] = Key_A;
+	_keyMap[SDLK_b] = Key_B;
+	_keyMap[SDLK_c] = Key_C;
+	_keyMap[SDLK_d] = Key_D;
+	_keyMap[SDLK_e] = Key_E;
+	_keyMap[SDLK_f] = Key_F;
+	_keyMap[SDLK_g] = Key_G;
+	_keyMap[SDLK_h] = Key_H;
+	_keyMap[SDLK_i] = Key_I;
+	_keyMap[SDLK_j] = Key_J;
+	_keyMap[SDLK_k] = Key_K;
+	_keyMap[SDLK_l] = Key_L;
+	_keyMap[SDLK_m] = Key_M;
+	_keyMap[SDLK_n] = Key_N;
+	_keyMap[SDLK_o] = Key_O;
+	_keyMap[SDLK_p] = Key_P;
+	_keyMap[SDLK_q] = Key_Q;
+	_keyMap[SDLK_r] = Key_R;
+	_keyMap[SDLK_s] = Key_S;
+	_keyMap[SDLK_t] = Key_T;
+	_keyMap[SDLK_u] = Key_U;
+	_keyMap[SDLK_v] = Key_V;
+	_keyMap[SDLK_w] = Key_W;
+	_keyMap[SDLK_x] = Key_X;
+	_keyMap[SDLK_y] = Key_Y;
+	_keyMap[SDLK_z] = Key_Z;
+	_keyMap[SDLK_LEFT] = Key_LEFT;
+	_keyMap[SDLK_RIGHT] = Key_RIGHT;
+	_keyMap[SDLK_BACKSPACE] = Key_BACK;
+	_keyMap[SDLK_KP_ENTER] = Key_ENTER;
+	_keyMap[SDLK_SPACE] = Key_SPACE;
 }
 
 WindowSDL::~WindowSDL() {
@@ -83,11 +116,31 @@ bool WindowSDL::ShouldClose() {
 	return mShouldClose;
 }
 
-void WindowSDL::PollEvents() {
+Event_t WindowSDL::PollEvents(Key_t& key)
+{
 	SDL_Event event;
+	key = Key_NONE;
 	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_QUIT)
+		switch (event.type) {
+		case SDL_QUIT:
 			mShouldClose = true;
+			key = Key_ESC;
+			return CLOSE;
+		case SDL_KEYDOWN:
+			key = _keyMap[event.key.keysym.sym];
+			return Key_DOWN;
+		case SDL_KEYUP:
+			key = _keyMap[event.key.keysym.sym];
+			return Key_UP;
+		case SDL_MOUSEBUTTONDOWN:
+			if (event.button.button == SDL_BUTTON_LEFT)
+				return MOUSE_LEFT_CLICK;
+			if (event.button.button == SDL_BUTTON_RIGHT)
+				return MOUSE_RIGHT_CLICK;
+			return NONE;
+		default:
+			return NONE;
+		}
 	}
 }
 
