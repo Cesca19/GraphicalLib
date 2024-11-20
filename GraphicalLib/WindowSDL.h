@@ -4,7 +4,7 @@
 
 class WindowSDL : public Window {
 public:
-	WindowSDL(const char* title, int width, int height);
+	WindowSDL();
 	~WindowSDL();
 	void Init() override;
 	void CreateWindow(int width, int height, std::string title) override;
