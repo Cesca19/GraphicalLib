@@ -7,7 +7,7 @@ int main(int argc, char** args)
 	//app.Init(1200, 800, "Circle App", 10);
 	//app.Run();
 
-	AppBrickBreaker appBrick(SDL);
+	AppBrickBreaker appBrick(RAYLIB);
 	appBrick.Init(1200, 800, "Brick Breaker");
 	appBrick.Run();
 	return 0;

@@ -1,6 +1,6 @@
 #include "AppBrickBreaker.h"
 
-AppBrickBreaker::AppBrickBreaker(DisplayMode displayMode) : _displayMode(displayMode), _playerSpeed(5)
+AppBrickBreaker::AppBrickBreaker(DisplayMode displayMode) : _displayMode(displayMode), _playerSpeed(7)
 {
 	if (displayMode == RAYLIB)
 		_window = std::make_shared<WindowRaylib>();
@@ -25,23 +25,39 @@ void AppBrickBreaker::Init(int witdh, int heigth, std::string title)
 	InitMap();
 
 	Vector2f ballPos(_width / 2, _height - 150);
-	_ball = _window->CreateCircle(ballPos, 15.0f, T_RED);
+	_ball = _window->CreateCircle(ballPos, 20.0f, T_BEIGE);
 	_movingBall = new CircleAnimated(_ball, 15, _width, _height);
 
-	_player = _window->CreateSprite("../Ressources/bar.png", barPosition);
+	_player = _window->CreateSprite("../Ressources/bar.png", {500, 700});
 	_player->SetScale(4.0f);
-	_ballCircle = _window->CreateCircle({ (float)witdh / 2, (float)heigth / 2 }, 30.0f, T_BEIGE);
-	_ball = new Ball(_ballCircle, _player, 3, _width, _height);
 }
 
 void AppBrickBreaker::UpdatePlayer(Key_t keyPressed)
 {
-	Vector2f pos = _player->GetPosition();
+	Vector2f pos = _player->GetPosition(), ballPos = _ball->GetPosition();
 	pos.x += (keyPressed == Key_RIGHT) ? _playerSpeed : (keyPressed == Key_LEFT) ? (-_playerSpeed) : 0;
 	pos.x = (pos.x < 0) ? 0 : 
 		(_player->GetWidth() * _player->GetScale() + pos.x) >= _width ? _width - (_player->GetWidth() * _player->GetScale()) :
 		pos.x;
 	_player->SetPosition(pos);
+	float width = _player->GetWidth() * _player->GetScale();
+	float height = _player->GetHeight() * _player->GetScale();
+	float ballRadius = _ball->GetRadius();
+
+	if (ballPos.x + ballRadius >= pos.x &&
+		ballPos.x - ballRadius <= pos.x + width &&
+		ballPos.y + ballRadius >= pos.y &&
+		ballPos.y - ballRadius <= pos.y + height) {
+		if (ballPos.x < pos.x)
+			_ball->SetPosition({ pos.x - ballRadius, ballPos.y });
+		else if (ballPos.x > pos.x + width)
+			_ball->SetPosition({ pos.x + width + ballRadius, ballPos.y });
+		if (ballPos.y < pos.y)
+			_ball->SetPosition({ ballPos.x, pos.y - ballRadius });
+		else if (ballPos.y > pos.y + height)
+			_ball->SetPosition({ ballPos.x, pos.y + height + ballRadius });
+		_movingBall->ChangeDirection();
+	}
 }
 
 void AppBrickBreaker::Run()
@@ -58,8 +74,6 @@ void AppBrickBreaker::Run()
 		UpdatePlayer(key);
 		_map->Draw();
 		_player->Draw();
-		_ball->Update();
-		_ball->Draw();
 
 		CheckCollisions();
 		_movingBall->Update();

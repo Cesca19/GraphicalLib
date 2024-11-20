@@ -30,9 +30,6 @@ private:
 	Circle* _ball = nullptr;
 	CircleAnimated* _movingBall = nullptr;
   
-	Circle* _ballCircle;
 	Sprite* _player = nullptr;
-	Ball* _ball;
-
 };
 
