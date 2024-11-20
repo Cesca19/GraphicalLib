@@ -1,12 +1,20 @@
 #include "WindowSDL.h"
 
-#include <iostream>
-#include <ostream>
-
-
-WindowSDL::WindowSDL() 
-{
+WindowSDL::WindowSDL() {
+	_colorsMap[T_GRAY] = { 128, 128, 128, 255 };
+	_colorsMap[T_YELLOW] = { 255, 255, 0, 255 };
+	_colorsMap[T_ORANGE] = { 255, 165, 0, 255 };
+	_colorsMap[T_PINK] = { 255, 192, 203, 255 };
+	_colorsMap[T_RED] = { 255, 0, 0, 255 };
+	_colorsMap[T_GREEN] = { 0, 255, 0, 255 };
+	_colorsMap[T_BLUE] = { 0, 0, 255, 255 };
+	_colorsMap[T_PURPLE] = { 128, 0, 128, 255 };
+	_colorsMap[T_BEIGE] = { 245, 245, 220, 255 };
+	_colorsMap[T_BROWN] = { 165, 42, 42, 255 };
+	_colorsMap[T_WHITE] = { 255, 255, 255, 255 };
+	_colorsMap[T_BLACK] = { 0, 0, 0, 255 };
 }
+
 WindowSDL::~WindowSDL() {
 	if (mFont) {
 		TTF_CloseFont(mFont);
@@ -48,13 +56,14 @@ Sprite* WindowSDL::CreateSprite(const char* filePath, const Vector2f& position) 
 	return sprite;
 }
 
-Circle* WindowSDL::CreateCircle(Vector2f position, float radius, Colors color)
-{
-	return nullptr;
+Circle* WindowSDL::CreateCircle(Vector2f position, float radius, Colors color) {
+	return new CircleSdl(position, radius, color, mRenderer);
 }
 
 
 void WindowSDL::Clear(Colors color) {
+	SDL_Color sdlColor = _colorsMap[color];
+	SDL_SetRenderDrawColor(mRenderer, sdlColor.r, sdlColor.g, sdlColor.b, sdlColor.a);
 	SDL_RenderClear(mRenderer);
 }
 
@@ -68,22 +77,6 @@ void WindowSDL::ShowDrawing() {
 
 void WindowSDL::StartDrawing()
 {
-}
-
-void WindowSDL::RenderSprite(Sprite* sprite) {
-	//auto sdlSprite = static_cast<SpriteSDL*>(sprite);
-	SDL_Texture* texture = static_cast<SDL_Texture*>(sprite->GetData());
-
-	if (texture) {
-		SDL_Rect destRect = {
-			static_cast<int>(sprite->GetX()),
-			static_cast<int>(sprite->GetY()),
-			sprite->GetSpriteSize(),
-			sprite->GetSpriteSize()
-		};
-
-		SDL_RenderCopy(mRenderer, texture, NULL, &destRect);
-	}
 }
 
 bool WindowSDL::ShouldClose() {

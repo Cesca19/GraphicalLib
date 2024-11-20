@@ -24,8 +24,16 @@ void SpriteSDL::LoadImage(const char* filePath) {
     }
 }
 
-void SpriteSDL::Draw()
-{
+void SpriteSDL::Draw() {
+    if (mTexture) {
+        SDL_Rect destRect = {
+            static_cast<int>(mPosition.x),
+            static_cast<int>(mPosition.y),
+            GetSpriteSize(),
+            GetSpriteSize()
+        };
+        SDL_RenderCopy(mRenderer, mTexture, NULL, &destRect);
+    }
 }
 
 void* SpriteSDL::GetData() {

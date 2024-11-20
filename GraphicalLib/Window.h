@@ -12,7 +12,6 @@ public:
 	virtual void StartDrawing() = 0;
 	virtual void ShowDrawing() = 0;
 	virtual void Clear(Colors color) = 0;
-	virtual void RenderSprite(Sprite* sprite) = 0;
 
 	virtual bool ShouldClose() = 0;
 	virtual void PollEvents() = 0;
@@ -35,6 +34,7 @@ protected:
 	float mCurrentFPS = 0;
 	Uint32 mLastTime = 0;
 	int mFrameCount = 0;
+
 
 };
 

@@ -9,6 +9,7 @@ public:
 	void LoadImage(const char* filePath) override;
 	void Draw() override;
 	void* GetData() override;
+
 private:
 	std::shared_ptr<Texture2D> _texture;
 };
