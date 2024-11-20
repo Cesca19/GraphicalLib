@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include "Brick.h"
 
 class Map {
 public:
@@ -12,5 +13,6 @@ private:
     int mRows;
     int mCols;
     std::vector<Sprite*> mSprites;
-
+    std::vector<Brick*> mBrick;
+    std::unordered_map<Brick_State, std::string> mStateSprite;
 };

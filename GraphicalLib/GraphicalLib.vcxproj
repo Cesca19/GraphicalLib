@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClCompile Include="AppBrickBreaker.cpp" />
     <ClCompile Include="AppCircles.cpp" />
+    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleAnimated.cpp" />
     <ClCompile Include="CircleRaylib.cpp" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="AppBrickBreaker.h" />
     <ClInclude Include="AppCircles.h" />
+    <ClInclude Include="Brick.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CircleAnimated.h" />
     <ClInclude Include="CircleRaylib.h" />

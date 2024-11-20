@@ -65,7 +65,7 @@ void WindowRaylib::CreateWindow(int width, int height, std::string title)
 Sprite* WindowRaylib::CreateSprite(const char* filePath, const Vector2f& position)
 {
 	Sprite* sprite = new SpriteRaylib();
-	sprite->LoadImage(filePath);
+	sprite->LoadImage(_strdup(filePath));
 	sprite->SetPosition(position);
 	return sprite;
 }

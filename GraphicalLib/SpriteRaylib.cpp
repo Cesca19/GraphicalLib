@@ -9,7 +9,7 @@ SpriteRaylib::~SpriteRaylib()
 	UnloadTexture(*_texture);
 }
 
-void SpriteRaylib::LoadImage(const char* filePath)
+void SpriteRaylib::LoadImage(char* filePath)
 {
 	mFilePath = filePath;
 	*_texture = LoadTexture(mFilePath);
@@ -27,4 +27,11 @@ void SpriteRaylib::Draw()
 void* SpriteRaylib::GetData()
 {
 	return nullptr;
+}
+
+void SpriteRaylib::SetFilePath(char* filePath)
+{
+	mFilePath = filePath;
+	UnloadTexture(*_texture);
+	*_texture = LoadTexture(mFilePath);
 }

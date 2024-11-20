@@ -31,9 +31,5 @@ protected:
 	int mWidth;
 	int mHeight;
 	float mCurrentFPS = 0;
-	Uint32 mLastTime = 0;
-	int mFrameCount = 0;
-
-
 };
 

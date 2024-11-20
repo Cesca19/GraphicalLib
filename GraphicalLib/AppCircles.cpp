@@ -25,7 +25,7 @@ void AppCircles::Init(int witdh, int heigth, std::string title, int circlesNb)
 	_window->SetTargetFps(60);
 
 	srand(time(0));
-	float randX = 0, randY = 0, radius = 0, speed = 2;
+	int randX = 0, randY = 0, radius = 0, speed = 2;
 	for (int i = 0, color = 0; i < circlesNb; i++) {
 		randX = rand() % (_window->GetWidth());
 		randY = rand() % (_window->GetHeight());

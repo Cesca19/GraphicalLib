@@ -14,7 +14,7 @@ SpriteSDL::~SpriteSDL() {
     }
 }
 
-void SpriteSDL::LoadImage(const char* filePath) {
+void SpriteSDL::LoadImage(char* filePath) {
     mFilePath = filePath;
     mSurface = IMG_Load(mFilePath);
     if (mSurface) {
@@ -38,5 +38,10 @@ void SpriteSDL::Draw() {
 
 void* SpriteSDL::GetData() {
     return mTexture;
+}
+
+void SpriteSDL::SetFilePath(char* filePath)
+{
+    mFilePath = filePath;
 }
 

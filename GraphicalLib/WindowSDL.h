@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "SpriteSDL.h"
 #include "CircleSdl.h"
+#include "Headers.h"
 
 struct KeycodeHash {
 	std::size_t operator()(SDL_Keycode key) const {
@@ -37,6 +38,8 @@ public:
 private:
 	bool mShouldClose = false;
 	int mTargetFrameTime;
+	Uint32 mLastTime = 0;
+	int mFrameCount = 0;
 
 	SDL_Surface* mWinSurface = nullptr;
 	SDL_Window* mWindow = nullptr;
