@@ -140,6 +140,7 @@
     <ClCompile Include="CircleRaylib.cpp" />
     <ClCompile Include="CircleSdl.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteRaylib.cpp" />
     <ClCompile Include="SpriteSDL.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="CircleRaylib.h" />
     <ClInclude Include="CircleSdl.h" />
     <ClInclude Include="headers.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRaylib.h" />
     <ClInclude Include="SpriteSDL.h" />

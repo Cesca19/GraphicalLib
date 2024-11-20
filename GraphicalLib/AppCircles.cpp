@@ -36,6 +36,12 @@ void AppCircles::Init(int witdh, int heigth, std::string title, int circlesNb)
 		_circles.push_back(tmp);
 		_movingCircles.push_back(new CircleAnimated(tmp, speed, _width, _height));
 	}
+	InitMap();
+
+	// bar sprite
+	Vector2f barPosition((_width - 64*4) / 2, _height - 100);
+	_bar = _window->CreateSprite("../Ressources/bar.png", barPosition);
+	_bar->SetScale(4.0f);
 }
 
 void AppCircles::Run()
@@ -48,17 +54,23 @@ void AppCircles::Run()
 		_window->PollEvents();
 		_window->Clear(T_WHITE);
 		_window->DrawFps();
+		_map->Draw();
 
 		for (int i = 0; i < _circles.size(); i++) {
 			_movingCircles[i]->Update();
 			_circles[i]->Draw();
 		}
 		sprite->Draw();
+		_bar->Draw();
 
 		_window->ShowDrawing();
 		_window->WaitFrame();
 	}
 	_window->Close();
+}
+
+void AppCircles::InitMap() {
+	_map = std::make_unique<Map>(_window.get(), 5, 8);
 }
 
 

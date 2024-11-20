@@ -19,8 +19,8 @@ void SpriteSDL::LoadImage(const char* filePath) {
     mSurface = IMG_Load(mFilePath);
     if (mSurface) {
         mTexture = SDL_CreateTextureFromSurface(mRenderer, mSurface);
-        //SDL_FreeSurface(mSurface);
-        //sprite->SetTexture(mTexture);
+        mWidth = mSurface->w;
+        mHeight = mSurface->h;
     }
 }
 
@@ -29,8 +29,8 @@ void SpriteSDL::Draw() {
         SDL_Rect destRect = {
             static_cast<int>(mPosition.x),
             static_cast<int>(mPosition.y),
-            GetSpriteSize(),
-            GetSpriteSize()
+            static_cast<int>(mWidth * mScale),
+            static_cast<int>(mHeight * mScale)
         };
         SDL_RenderCopy(mRenderer, mTexture, NULL, &destRect);
     }
