@@ -46,10 +46,10 @@ void AppCircles::Run()
 	while (!_window->ShouldClose()) {
 		_window->StartDrawing();
 
-		_window->PollEvents();
+		_window->PollEvents(key);
 		_window->Clear(T_WHITE);
 		_window->DrawFps();
-		_window->GetEvent(key);
+		//_window->GetEvent(key);
 
 		for (int i = 0; i < _circles.size(); i++) {
 			if (key == Key_SPACE) {

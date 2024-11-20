@@ -3,6 +3,18 @@
 #include "SpriteSDL.h"
 #include "CircleSdl.h"
 
+struct KeycodeHash {
+	std::size_t operator()(SDL_Keycode key) const {
+		return std::hash<int>()(static_cast<int>(key));
+	}
+};
+
+struct KeycodeEqual {
+	bool operator()(SDL_Keycode lhs, SDL_Keycode rhs) const {
+		return static_cast<int>(lhs) == static_cast<int>(rhs);
+	}
+};
+
 class WindowSDL : public Window {
 public:
 	WindowSDL();
@@ -16,12 +28,11 @@ public:
 	void ShowDrawing() override;
 	void StartDrawing()override;
 	bool ShouldClose() override;
-	void PollEvents() override;
+	Event_t PollEvents(Key_t& key) override;
 	void WaitFrame() override;
 	void SetTargetFps(int fps) override;
 	void DrawFps() override;
 	float GetFps() override { return mCurrentFPS; }
-	Event_t GetEvent(Key_t& key) override;
 
 private:
 	bool mShouldClose = false;
@@ -32,7 +43,7 @@ private:
 	SDL_Renderer* mRenderer = nullptr;
 	TTF_Font* mFont = nullptr;
 	std::unordered_map<Colors, SDL_Color> _colorsMap;
-
+	std::unordered_map<Sint32, Key_t, KeycodeHash, KeycodeEqual> _keyMap;
 	void UpdateFPS();
 	
 };

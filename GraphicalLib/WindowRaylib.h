@@ -14,12 +14,11 @@ public:
 	void StartDrawing() override;
 	void ShowDrawing() override;
 	void Clear(Colors color)override;
-	Event_t GetEvent(Key_t& key) override;
 
 	Sprite* CreateSprite(const char* filePath, const Vector2f& position) override;
 	Circle* CreateCircle(Vector2f position, float radius, Colors color) override;
 	bool ShouldClose() override;
-	void PollEvents() override;
+	Event_t PollEvents(Key_t& key) override;
 	void WaitFrame() override;
 	void SetTargetFps(int fps) override;
 	void DrawFps() override;

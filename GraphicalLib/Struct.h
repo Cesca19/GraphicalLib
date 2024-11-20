@@ -3,6 +3,7 @@
 #include <string>
 #include <memory>
 #include <unordered_map>
+#include <map>
 
 struct Vector2f {
     float x;
@@ -46,7 +47,7 @@ enum Event_t {
     NONE,
     CLOSE,
     MOUSE_LEFT_CLICK,
-    MOUSE_RIGHT_CLIK,
+    MOUSE_RIGHT_CLICK,
 	Key_DOWN,
 	Key_UP,
 };

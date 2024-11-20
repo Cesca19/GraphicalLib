@@ -80,8 +80,28 @@ bool WindowRaylib::ShouldClose()
 	return WindowShouldClose();
 }
 
-void WindowRaylib::PollEvents()
+Event_t WindowRaylib::PollEvents(Key_t& key)
 {
+	key = Key_NONE;
+	for (const auto& keys : _keyMap) {
+		if (IsKeyDown(keys.first)) {
+			key = keys.second;
+			return Key_DOWN;
+		}
+		else if (IsKeyReleased(keys.first)) {
+			key = keys.second;
+			return Key_DOWN;
+		}
+	}
+	if (IsKeyDown(KEY_ESCAPE)) {
+		key = Key_ESC;
+		return CLOSE;
+	}
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		return MOUSE_LEFT_CLICK;
+	if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+		return MOUSE_RIGHT_CLICK;
+	return NONE;
 }
 
 void WindowRaylib::WaitFrame()
@@ -121,27 +141,4 @@ void WindowRaylib::ShowDrawing()
 void WindowRaylib::Clear(Colors color)
 {
 	ClearBackground(_colorsMap[color]);
-}
-
-Event_t WindowRaylib::GetEvent(Key_t& key)
-{
-	key = Key_NONE;
-	for (const auto& keys : _keyMap) {
-		if (IsKeyDown(keys.first)) {
-			key = keys.second;
-			return Key_DOWN;
-		} else if (IsKeyReleased(keys.first)) {
-			key = keys.second;
-			return Key_DOWN;
-		}
-	}
-	if (IsKeyDown(KEY_ESCAPE)) {
-		key = Key_ESC;
-		return CLOSE;
-	}
-	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) 
-		return MOUSE_LEFT_CLICK;
-	if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
-		return MOUSE_RIGHT_CLIK;
-	return NONE;
 }
