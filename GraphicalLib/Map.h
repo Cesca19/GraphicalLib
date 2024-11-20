@@ -7,6 +7,7 @@ public:
     Map(Window* window, int rows, int cols);
     void Draw();
     void InitializeMap();
+    std::vector<Brick*>& GetBricks() { return mBrick; }
 
 private:
     Window* mWindow;
@@ -15,4 +16,5 @@ private:
     std::vector<Sprite*> mSprites;
     std::vector<Brick*> mBrick;
     std::unordered_map<Brick_State, std::string> mStateSprite;
+
 };

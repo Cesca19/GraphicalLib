@@ -14,6 +14,7 @@ public:
 	void Init(int witdh, int heigth, std::string title);
 	void Run();
 	void InitMap();
+	void CheckCollisions();
 
 private:
 	DisplayMode _displayMode;
@@ -24,5 +25,7 @@ private:
 	std::unique_ptr<Map> _map;
 
 	Sprite* _bar = nullptr;
+	Circle* _ball = nullptr;
+	CircleAnimated* _movingBall = nullptr;
 };
 
