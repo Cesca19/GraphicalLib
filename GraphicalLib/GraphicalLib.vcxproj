@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AppBrickBreaker.cpp" />
     <ClCompile Include="AppCircles.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleAnimated.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="WindowSDL.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppBrickBreaker.h" />
     <ClInclude Include="AppCircles.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CircleAnimated.h" />
