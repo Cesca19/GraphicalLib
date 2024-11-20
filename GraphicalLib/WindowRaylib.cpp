@@ -41,10 +41,6 @@ Circle* WindowRaylib::CreateCircle(Vector2f position, float radius, Colors color
 	return new CircleRaylib(position, radius, color);
 }
 
-void WindowRaylib::RenderSprite(Sprite* sprite)
-{
-}
-
 bool WindowRaylib::ShouldClose()
 {
 	return WindowShouldClose();
