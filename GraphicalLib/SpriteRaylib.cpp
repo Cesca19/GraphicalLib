@@ -19,9 +19,7 @@ void SpriteRaylib::LoadImage(char* filePath)
 
 void SpriteRaylib::Draw()
 {
-	Rectangle source = { 0.0f, 0.0f, (float)_texture->width, (float)_texture->height };
-	Rectangle dest = { mPosition.x, mPosition.y, _texture->width * mScale, _texture->height * mScale };
-	DrawTexturePro(*_texture, source, dest, Vector2{ 0, 0 }, 0.0f, WHITE);
+	DrawTextureEx(*_texture, { mPosition.x, mPosition.y }, 0.0f, mScale, WHITE);
 }
 
 void* SpriteRaylib::GetData()
@@ -34,4 +32,14 @@ void SpriteRaylib::SetFilePath(char* filePath)
 	mFilePath = filePath;
 	UnloadTexture(*_texture);
 	*_texture = LoadTexture(mFilePath);
+}
+
+int SpriteRaylib::GetWidth() const
+{
+	return _texture->width;
+}
+
+int SpriteRaylib::GetHeight() const
+{
+	return _texture->height;
 }

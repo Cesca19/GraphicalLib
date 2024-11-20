@@ -44,4 +44,3 @@ void SpriteSDL::SetFilePath(char* filePath)
 {
     mFilePath = filePath;
 }
-

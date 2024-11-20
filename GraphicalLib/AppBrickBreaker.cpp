@@ -1,6 +1,6 @@
 #include "AppBrickBreaker.h"
 
-AppBrickBreaker::AppBrickBreaker(DisplayMode displayMode) : _displayMode(displayMode)
+AppBrickBreaker::AppBrickBreaker(DisplayMode displayMode) : _displayMode(displayMode), _playerSpeed(5)
 {
 	if (displayMode == RAYLIB)
 		_window = std::make_shared<WindowRaylib>();
@@ -26,8 +26,18 @@ void AppBrickBreaker::Init(int witdh, int heigth, std::string title)
 	InitMap();
 
 	Vector2f barPosition((_width - 64 * 4) / 2, _height - 100);
-	_bar = _window->CreateSprite("../Ressources/bar.png", barPosition);
-	_bar->SetScale(4.0f);
+	_player = _window->CreateSprite("../Ressources/bar.png", barPosition);
+	_player->SetScale(4.0f);
+}
+
+void AppBrickBreaker::UpdatePlayer(Key_t keyPressed)
+{
+	Vector2f pos = _player->GetPosition();
+	pos.x += (keyPressed == Key_RIGHT) ? _playerSpeed : (keyPressed == Key_LEFT) ? (-_playerSpeed) : 0;
+	pos.x = (pos.x < 0) ? 0 : 
+		(_player->GetWidth() * _player->GetScale() + pos.x) >= _width ? _width - (_player->GetWidth() * _player->GetScale()) :
+		pos.x;
+	_player->SetPosition(pos);
 }
 
 void AppBrickBreaker::Run()
@@ -41,8 +51,9 @@ void AppBrickBreaker::Run()
 		_window->Clear(T_WHITE);
 		_window->DrawFps();
 
+		UpdatePlayer(key);
 		_map->Draw();
-		_bar->Draw();
+		_player->Draw();
 
 		_window->ShowDrawing();
 		_window->WaitFrame();

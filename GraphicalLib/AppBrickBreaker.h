@@ -12,17 +12,19 @@ public:
 	AppBrickBreaker(DisplayMode displayMode);
 	~AppBrickBreaker();
 	void Init(int witdh, int heigth, std::string title);
+	void UpdatePlayer(Key_t keyPressed);
 	void Run();
 	void InitMap();
 
 private:
 	DisplayMode _displayMode;
 	std::shared_ptr<Window> _window;
+	int _playerSpeed;
 	int _width;
 	int _height;
 	std::string _title;
 	std::unique_ptr<Map> _map;
 
-	Sprite* _bar = nullptr;
+	Sprite* _player = nullptr;
 };
 
