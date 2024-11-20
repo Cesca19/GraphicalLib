@@ -14,6 +14,7 @@ public:
 	void StartDrawing() override;
 	void ShowDrawing() override;
 	void Clear(Colors color)override;
+	Event_t GetEvent(Key_t& key) override;
 
 	Sprite* CreateSprite(const char* filePath, const Vector2f& position) override;
 	Circle* CreateCircle(Vector2f position, float radius, Colors color) override;
@@ -26,5 +27,6 @@ public:
 	float GetFps() override;
 private:
 	std::unordered_map<Colors, Color>  _colorsMap;
+	std::unordered_map<KeyboardKey, Key_t>  _keyMap;
 };
 

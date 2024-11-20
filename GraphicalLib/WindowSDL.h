@@ -21,6 +21,7 @@ public:
 	void SetTargetFps(int fps) override;
 	void DrawFps() override;
 	float GetFps() override { return mCurrentFPS; }
+	Event_t GetEvent(Key_t& key) override;
 
 private:
 	bool mShouldClose = false;

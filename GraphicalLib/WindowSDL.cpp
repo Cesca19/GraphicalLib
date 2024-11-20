@@ -135,3 +135,8 @@ void WindowSDL::DrawFps() {
 		SDL_FreeSurface(textSurface);
 	}
 }
+
+Event_t WindowSDL::GetEvent(Key_t& key)
+{
+	return Event_t();
+}

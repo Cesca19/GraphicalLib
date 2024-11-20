@@ -20,6 +20,7 @@ public:
 	virtual void SetTargetFps(int fps) = 0;
 	virtual void DrawFps() = 0;
 	virtual float GetFps() = 0;
+	virtual Event_t GetEvent(Key_t &key) = 0;
 
 	virtual Sprite* CreateSprite(const char* filePath, const Vector2f& position) = 0;
 	virtual Circle* CreateCircle(Vector2f position, float radius, Colors color) = 0;
