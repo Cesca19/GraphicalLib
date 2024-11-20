@@ -19,8 +19,8 @@ public:
     const Vector2f& GetVelocity() const { return mVelocity; }
     char* GetFilePath() { return mFilePath; }
     
-    int GetWidth() const { return mWidth; }
-    int GetHeight() const { return mHeight; }
+    virtual int GetWidth() const { return mWidth; }
+    virtual int GetHeight() const { return mHeight; }
     float GetScale() const { return mScale; }
 
 protected:

@@ -52,4 +52,3 @@ void SpriteSDL::SetFilePath(char* filePath) {
 
     LoadImage(filePath);
 }
-

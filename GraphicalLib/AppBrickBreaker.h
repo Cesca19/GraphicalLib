@@ -5,6 +5,7 @@
 #include "WindowSDL.h"
 #include "WindowRaylib.h"
 #include "Map.h"
+#include "Ball.h"
 
 class AppBrickBreaker
 {
@@ -12,6 +13,7 @@ public:
 	AppBrickBreaker(DisplayMode displayMode);
 	~AppBrickBreaker();
 	void Init(int witdh, int heigth, std::string title);
+	void UpdatePlayer(Key_t keyPressed);
 	void Run();
 	void InitMap();
 	void CheckCollisions();
@@ -19,13 +21,18 @@ public:
 private:
 	DisplayMode _displayMode;
 	std::shared_ptr<Window> _window;
+	int _playerSpeed;
 	int _width;
 	int _height;
 	std::string _title;
 	std::unique_ptr<Map> _map;
 
-	Sprite* _bar = nullptr;
 	Circle* _ball = nullptr;
 	CircleAnimated* _movingBall = nullptr;
+  
+	Circle* _ballCircle;
+	Sprite* _player = nullptr;
+	Ball* _ball;
+
 };
 

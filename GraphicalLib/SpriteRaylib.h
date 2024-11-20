@@ -10,6 +10,8 @@ public:
 	void Draw() override;
 	void* GetData() override;
 	void SetFilePath(char* filePath) override;
+	int GetWidth() const override;
+	int GetHeight() const override;
 
 private:
 	std::shared_ptr<Texture2D> _texture;
