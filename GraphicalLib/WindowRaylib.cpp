@@ -90,7 +90,7 @@ Event_t WindowRaylib::PollEvents(Key_t& key)
 		}
 		else if (IsKeyReleased(keys.first)) {
 			key = keys.second;
-			return Key_DOWN;
+			return Key_UP;
 		}
 	}
 	if (IsKeyDown(KEY_ESCAPE)) {

@@ -21,13 +21,14 @@ void AppBrickBreaker::Init(int witdh, int heigth, std::string title)
 	_window->CreateWindow(witdh, heigth, "Graphic Lib");
 	_window->SetTargetFps(60);
 
-	srand(time(0));
 	float randX = 0, randY = 0, radius = 0, speed = 2;
 	InitMap();
 
 	Vector2f barPosition((_width - 64 * 4) / 2, _height - 100);
 	_player = _window->CreateSprite("../Ressources/bar.png", barPosition);
 	_player->SetScale(4.0f);
+	_ballCircle = _window->CreateCircle({ (float)witdh / 2, (float)heigth / 2 }, 30.0f, T_BEIGE);
+	_ball = new Ball(_ballCircle, _player, 3, _width, _height);
 }
 
 void AppBrickBreaker::UpdatePlayer(Key_t keyPressed)
@@ -54,6 +55,8 @@ void AppBrickBreaker::Run()
 		UpdatePlayer(key);
 		_map->Draw();
 		_player->Draw();
+		_ball->Update();
+		_ball->Draw();
 
 		_window->ShowDrawing();
 		_window->WaitFrame();

@@ -5,6 +5,7 @@
 #include "WindowSDL.h"
 #include "WindowRaylib.h"
 #include "Map.h"
+#include "Ball.h"
 
 class AppBrickBreaker
 {
@@ -25,6 +26,8 @@ private:
 	std::string _title;
 	std::unique_ptr<Map> _map;
 
+	Circle* _ballCircle;
 	Sprite* _player = nullptr;
+	Ball* _ball;
 };
 

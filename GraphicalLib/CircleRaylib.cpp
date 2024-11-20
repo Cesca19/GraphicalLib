@@ -14,6 +14,7 @@ CircleRaylib::CircleRaylib(Vector2f position, float radius, Colors color) : Circ
 	_colorsMap[T_BROWN] = BROWN;
 	_colorsMap[T_WHITE] = WHITE;
 	_colorsMap[T_BLACK] = BLACK;
+	_colorsMap[T_MAGENTA] = MAGENTA;
 }
 
 void CircleRaylib::Draw()
