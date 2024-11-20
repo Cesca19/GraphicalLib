@@ -17,7 +17,6 @@ public:
 
 	Sprite* CreateSprite(const char* filePath, const Vector2f& position) override;
 	Circle* CreateCircle(Vector2f position, float radius, Colors color) override;
-	void RenderSprite(Sprite* sprite) override;
 	bool ShouldClose() override;
 	void PollEvents() override;
 	void WaitFrame() override;

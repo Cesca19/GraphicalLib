@@ -1,6 +1,7 @@
 #pragma once
 #include "Window.h"
 #include "SpriteSDL.h"
+#include "CircleSdl.h"
 
 class WindowSDL : public Window {
 public:
@@ -14,7 +15,6 @@ public:
 	void Close() override;
 	void ShowDrawing() override;
 	void StartDrawing()override;
-	void RenderSprite(Sprite* sprite) override;
 	bool ShouldClose() override;
 	void PollEvents() override;
 	void WaitFrame() override;
@@ -30,6 +30,7 @@ private:
 	SDL_Window* mWindow = nullptr;
 	SDL_Renderer* mRenderer = nullptr;
 	TTF_Font* mFont = nullptr;
+	std::unordered_map<Colors, SDL_Color> _colorsMap;
 
 	void UpdateFPS();
 	
