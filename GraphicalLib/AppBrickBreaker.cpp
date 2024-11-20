@@ -24,7 +24,10 @@ void AppBrickBreaker::Init(int witdh, int heigth, std::string title)
 	float randX = 0, randY = 0, radius = 0, speed = 2;
 	InitMap();
 
-	Vector2f barPosition((_width - 64 * 4) / 2, _height - 100);
+	Vector2f ballPos(_width / 2, _height - 150);
+	_ball = _window->CreateCircle(ballPos, 15.0f, T_RED);
+	_movingBall = new CircleAnimated(_ball, 15, _width, _height);
+
 	_player = _window->CreateSprite("../Ressources/bar.png", barPosition);
 	_player->SetScale(4.0f);
 	_ballCircle = _window->CreateCircle({ (float)witdh / 2, (float)heigth / 2 }, 30.0f, T_BEIGE);
@@ -58,6 +61,10 @@ void AppBrickBreaker::Run()
 		_ball->Update();
 		_ball->Draw();
 
+		CheckCollisions();
+		_movingBall->Update();
+		_ball->Draw();
+
 		_window->ShowDrawing();
 		_window->WaitFrame();
 	}
@@ -67,4 +74,10 @@ void AppBrickBreaker::Run()
 void AppBrickBreaker::InitMap()
 {
 	_map = std::make_unique<Map>(_window.get(), 5, 8);
+}
+
+void AppBrickBreaker::CheckCollisions() {
+	for (auto brick : _map->GetBricks()) {
+		brick->Update(_ball, _movingBall);
+	}
 }

@@ -12,8 +12,8 @@ void Map::InitializeMap() {
     const int startX = (mWindow->GetWidth() - totalWidth) / 2;  
     const int startY = 50;  
 
-    const int gapX = -2; 
-    const int gapY = -2;
+    const int gapX = -4; 
+    const int gapY = -4;
 
     const char* brickSprites[] = {
         "../Ressources/brick-1.png",
@@ -22,10 +22,10 @@ void Map::InitializeMap() {
         "../Ressources/brick-4.png"
     };
 
-    mStateSprite[PINK_STATE] = "../Ressources/brick-1.png";
-    mStateSprite[GREEN_STATE] = "../Ressources/brick-2.png";
-    mStateSprite[ORANGE_STATE] = "../Ressources/brick-3.png";
-    mStateSprite[BLUE_STATE] = "../Ressources/brick-4.png";
+    mStateSprite[PINK_STATE] = brickSprites[0];
+    mStateSprite[GREEN_STATE] = brickSprites[1];
+    mStateSprite[ORANGE_STATE] = brickSprites[2];
+    mStateSprite[BLUE_STATE] = brickSprites[3];
 
     for (int row = 0; row < mRows; row++) {
         for (int col = 0; col < mCols; col++) {
@@ -46,8 +46,20 @@ void Map::InitializeMap() {
 }
 
 void Map::Draw() {
-    for (auto brick : mBrick) {
-        brick->Update();
-        brick->Draw();
+    auto it = mBrick.begin();
+    while (it != mBrick.end()) {
+        if ((*it)->IsDestroyed()) {
+            delete* it;
+            auto spriteIt = std::find(mSprites.begin(), mSprites.end(), (*it)->GetSprite());
+            if (spriteIt != mSprites.end()) {
+                delete* spriteIt;
+                mSprites.erase(spriteIt);
+            }
+            it = mBrick.erase(it);
+        }
+        else {
+            (*it)->Draw();
+            ++it;
+        }
     }
 }

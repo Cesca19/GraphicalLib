@@ -1,5 +1,7 @@
 #pragma once
 #include "Sprite.h"
+#include "Circle.h"
+#include "CircleAnimated.h"
 
 enum Brick_State {
 	DESTROY_STATE,
@@ -19,10 +21,15 @@ public:
 	//quand le state atteint destroy la brique est détruite et supprimée de la map
 	void OnHit();
 	void OnStateChange();
-	void Update();
+	void Update(Circle* ball, CircleAnimated* ballAnimation);
+	bool IsDestroyed() const { return _isDestroyed; }
+	Sprite* GetSprite() const { return _sprite; }
+
 private:
 	Sprite* _sprite;
 	Brick_State _currentState;
 	std::unordered_map<Brick_State, std::string> _stateSprite;
+	bool _isDestroyed = false;
+
 };
 

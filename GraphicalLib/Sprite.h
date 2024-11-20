@@ -27,7 +27,7 @@ protected:
     Vector2f mPosition;
     Vector2f mVelocity;
     char* mFilePath;
-    int mSpriteSize = 64;
+
     int mWidth = 0;
     int mHeight = 0;
     float mScale = 1.0f;

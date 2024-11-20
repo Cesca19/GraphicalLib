@@ -16,6 +16,7 @@ public:
 	void UpdatePlayer(Key_t keyPressed);
 	void Run();
 	void InitMap();
+	void CheckCollisions();
 
 private:
 	DisplayMode _displayMode;
@@ -26,8 +27,12 @@ private:
 	std::string _title;
 	std::unique_ptr<Map> _map;
 
+	Circle* _ball = nullptr;
+	CircleAnimated* _movingBall = nullptr;
+  
 	Circle* _ballCircle;
 	Sprite* _player = nullptr;
 	Ball* _ball;
+
 };
 

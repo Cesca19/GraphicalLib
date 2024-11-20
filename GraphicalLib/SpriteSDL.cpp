@@ -40,7 +40,15 @@ void* SpriteSDL::GetData() {
     return mTexture;
 }
 
-void SpriteSDL::SetFilePath(char* filePath)
-{
-    mFilePath = filePath;
+void SpriteSDL::SetFilePath(char* filePath) {
+    if (mTexture) {
+        SDL_DestroyTexture(mTexture);
+        mTexture = nullptr;
+    }
+    if (mSurface) {
+        SDL_FreeSurface(mSurface);
+        mSurface = nullptr;
+    }
+
+    LoadImage(filePath);
 }
