@@ -39,7 +39,8 @@ private:
 	bool mShouldClose = false;
 	int mTargetFrameTime;
 	Uint32 mLastTime = 0;
-	int mFrameCount = 0;
+	float mDeltaTime = 0;
+	//int mFrameCount = 0;
 
 	SDL_Surface* mWinSurface = nullptr;
 	SDL_Window* mWindow = nullptr;

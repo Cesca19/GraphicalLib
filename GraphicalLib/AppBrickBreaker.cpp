@@ -69,7 +69,6 @@ void AppBrickBreaker::Run()
 
 		_window->PollEvents(key);
 		_window->Clear(T_WHITE);
-		_window->DrawFps();
 
 		UpdatePlayer(key);
 		_map->Draw();
@@ -79,6 +78,7 @@ void AppBrickBreaker::Run()
 		_movingBall->Update();
 		_ball->Draw();
 
+		_window->DrawFps();
 		_window->ShowDrawing();
 		_window->WaitFrame();
 	}

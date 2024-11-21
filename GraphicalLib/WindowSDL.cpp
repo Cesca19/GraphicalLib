@@ -148,7 +148,8 @@ Event_t WindowSDL::PollEvents(Key_t& key)
 }
 
 void WindowSDL::WaitFrame() {
-	SDL_Delay(mTargetFrameTime);
+	UpdateFPS();
+	SDL_Delay(mTargetFrameTime - mDeltaTime);
 }
 
 void WindowSDL::SetTargetFps(int fps) {
@@ -156,23 +157,18 @@ void WindowSDL::SetTargetFps(int fps) {
 }
 
 void WindowSDL::UpdateFPS() {
-	mFrameCount++;
-	Uint32 currentTime = SDL_GetTicks();
+	Uint64 currentTime = SDL_GetTicks64();
 
-	if (currentTime - mLastTime >= 100) {
-		mCurrentFPS = mFrameCount / ((currentTime - mLastTime) / 1000.0f);
-		mFrameCount = 0;
-		mLastTime = currentTime;
-	}
+	mDeltaTime = ((float)(currentTime - mLastTime) / 1000.f);
+	mCurrentFPS = 1.f / mDeltaTime;
+	mLastTime = currentTime;
 }
 
 void WindowSDL::DrawFps() {
-	UpdateFPS();
 
 	SDL_Color textColor = { 0, 0, 0, 255 };
 	char fpsText[16];
 	sprintf_s(fpsText, sizeof(fpsText), "FPS: %.1f", mCurrentFPS);
-	std::cout << mCurrentFPS << std::endl;
 
 	SDL_Surface* textSurface = TTF_RenderText_Solid(mFont, fpsText, textColor);
 	if (textSurface) {
