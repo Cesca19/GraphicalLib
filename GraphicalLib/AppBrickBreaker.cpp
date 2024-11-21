@@ -22,7 +22,8 @@ void AppBrickBreaker::Init(int witdh, int heigth, std::string title)
 	_window->SetTargetFps(60);
 
 	float randX = 0, randY = 0, radius = 0, speed = 2;
-	InitMap();
+
+	_map = std::make_unique<Map>(_window.get(), 5, 8);
 
 	Vector2f ballPos(_width / 2, _height - 150);
 	_ball = _window->CreateCircle(ballPos, 20.0f, T_BEIGE);
@@ -83,11 +84,6 @@ void AppBrickBreaker::Run()
 		_window->WaitFrame();
 	}
 	_window->Close();
-}
-
-void AppBrickBreaker::InitMap()
-{
-	_map = std::make_unique<Map>(_window.get(), 5, 8);
 }
 
 void AppBrickBreaker::CheckCollisions() {

@@ -15,7 +15,6 @@ public:
 	void Init(int witdh, int heigth, std::string title);
 	void UpdatePlayer(Key_t keyPressed);
 	void Run();
-	void InitMap();
 	void CheckCollisions();
 
 private:

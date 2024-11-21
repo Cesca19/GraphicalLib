@@ -23,6 +23,7 @@ public:
 	void SetTargetFps(int fps) override;
 	void DrawFps() override;
 	float GetFps() override;
+
 private:
 	std::unordered_map<Colors, Color>  _colorsMap;
 	std::unordered_map<KeyboardKey, Key_t>  _keyMap;

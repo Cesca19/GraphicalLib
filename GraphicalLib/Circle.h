@@ -11,21 +11,9 @@ public:
     float GetRadius();
     Vector2f GetPosition();
     virtual void Draw() = 0;
+
 protected:
     Vector2f _position;
     float _radius;
     Colors _color;
 };
-
-/*
-class Circle {
-public:
-    Circle(Sprite* sprite, float speed = 5.0f);
-    void Update(int windowWidth, int windowHeight);
-    Sprite* GetSprite() const { return sprite; }
-
-private:
-    Sprite* sprite;
-    Vector2f velocity;
-    float speed;
-};*/

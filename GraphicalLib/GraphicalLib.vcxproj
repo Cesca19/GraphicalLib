@@ -113,6 +113,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)\vcpkg_installed\x64-windows\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\vcpkg_installed\x64-windows\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Raylib|x64'">
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-SDL|x64'">
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
@@ -200,7 +210,6 @@
   <ItemGroup>
     <ClCompile Include="AppBrickBreaker.cpp" />
     <ClCompile Include="AppCircles.cpp" />
-    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleAnimated.cpp" />
@@ -217,7 +226,6 @@
   <ItemGroup>
     <ClInclude Include="AppBrickBreaker.h" />
     <ClInclude Include="AppCircles.h" />
-    <ClInclude Include="Ball.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CircleAnimated.h" />

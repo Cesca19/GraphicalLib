@@ -137,8 +137,9 @@ Event_t WindowSDL::PollEvents(Key_t& key)
 			key = Key_ESC;
 			return CLOSE;
 		// should not return NONE in default
-		// will cause a untreatement poll event
-		// and will make the app slow
+		// will exit the event loop before processing all queued events
+		// will leave unprocessed events in the queue
+		// will make the app slow
 		//default:
 		//	return NONE;
 		}

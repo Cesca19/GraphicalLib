@@ -6,9 +6,9 @@
 enum Brick_State {
 	DESTROY_STATE,
 	PINK_STATE,
-	GREEN_STATE,
-	ORANGE_STATE,
 	BLUE_STATE,
+	ORANGE_STATE,
+	GREEN_STATE,
 };
 
 class Brick

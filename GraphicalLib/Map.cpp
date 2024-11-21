@@ -23,9 +23,9 @@ void Map::InitializeMap() {
     };
 
     mStateSprite[PINK_STATE] = brickSprites[0];
-    mStateSprite[GREEN_STATE] = brickSprites[1];
+    mStateSprite[BLUE_STATE] = brickSprites[1];
     mStateSprite[ORANGE_STATE] = brickSprites[2];
-    mStateSprite[BLUE_STATE] = brickSprites[3];
+    mStateSprite[GREEN_STATE] = brickSprites[3];
 
     for (int row = 0; row < mRows; row++) {
         for (int col = 0; col < mCols; col++) {
