@@ -21,7 +21,7 @@ cd vcpkg; .\bootstrap-vcpkg.bat
 
 ## Building
 1. Open `GraphicalLib.sln` in Visual Studio
-2. Select your Release configuration
+2. Select `Release` configuration
 3. Build the solution (F7)
 
 ## Usage
