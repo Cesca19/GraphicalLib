@@ -25,7 +25,7 @@ void CircleSdl::InitColorsMap() {
     _colorsMap[T_GREEN] = { 0, 255, 0, 255 };
     _colorsMap[T_BLUE] = { 0, 0, 255, 255 };
     _colorsMap[T_PURPLE] = { 128, 0, 128, 255 };
-    _colorsMap[T_BEIGE] = { 245, 245, 220, 255 };
+    _colorsMap[T_BEIGE] = { 204, 170, 136, 255 };
     _colorsMap[T_BROWN] = { 165, 42, 42, 255 };
     _colorsMap[T_WHITE] = { 255, 255, 255, 255 };
     _colorsMap[T_BLACK] = { 0, 0, 0, 255 };

@@ -9,7 +9,7 @@ WindowSDL::WindowSDL() {
 	_colorsMap[T_GREEN] = { 0, 255, 0, 255 };
 	_colorsMap[T_BLUE] = { 0, 0, 255, 255 };
 	_colorsMap[T_PURPLE] = { 128, 0, 128, 255 };
-	_colorsMap[T_BEIGE] = { 245, 245, 220, 255 };
+	_colorsMap[T_BEIGE] = { 204, 170, 136, 255 };
 	_colorsMap[T_BROWN] = { 165, 42, 42, 255 };
 	_colorsMap[T_WHITE] = { 255, 255, 255, 255 };
 	_colorsMap[T_BLACK] = { 0, 0, 0, 255 };
@@ -120,18 +120,13 @@ Event_t WindowSDL::PollEvents(Key_t& key)
 {
 	SDL_Event event;
 	key = Key_NONE;
+
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_QUIT:
 			mShouldClose = true;
 			key = Key_ESC;
 			return CLOSE;
-		case SDL_KEYDOWN:
-			key = _keyMap[event.key.keysym.sym];
-			return Key_DOWN;
-		case SDL_KEYUP:
-			key = _keyMap[event.key.keysym.sym];
-			return Key_UP;
 		case SDL_MOUSEBUTTONDOWN:
 			if (event.button.button == SDL_BUTTON_LEFT)
 				return MOUSE_LEFT_CLICK;
@@ -142,6 +137,15 @@ Event_t WindowSDL::PollEvents(Key_t& key)
 			return NONE;
 		}
 	}
+
+	const Uint8* keys = SDL_GetKeyboardState(NULL);
+	if (keys[SDL_SCANCODE_LEFT]) {
+		key = _keyMap[SDLK_LEFT];
+	}
+	if (keys[SDL_SCANCODE_RIGHT]) {
+		key = _keyMap[SDLK_RIGHT];
+	}
+
 }
 
 void WindowSDL::WaitFrame() {
@@ -166,7 +170,7 @@ void WindowSDL::UpdateFPS() {
 void WindowSDL::DrawFps() {
 	UpdateFPS();
 
-	SDL_Color textColor = { 0, 0, 0, 255 }; // Black color
+	SDL_Color textColor = { 0, 0, 0, 255 };
 	char fpsText[16];
 	sprintf_s(fpsText, sizeof(fpsText), "FPS: %.1f", mCurrentFPS);
 
