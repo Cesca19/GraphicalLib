@@ -7,5 +7,6 @@ A program that allow to to choose between SDL and Raylib to create graphical exp
 
 ## Lauching
 * At the root of your repository open a terminal and launch the command vcpkg install
+* Lauch the solution GraphicalLib.sln and lauch the build
 * Then go to the folder GraphicalLib
 * Open a terminal there and lauch this command "..\x64\Debug\GraphicalLib.exe -sdl" to lauch the project in sdl mode and "..\x64\Debug\GraphicalLib.exe -raylib" to lauch the project in raylib mode and 
