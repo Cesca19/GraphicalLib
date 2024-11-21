@@ -11,6 +11,8 @@ Global
 		Debug|x86 = Debug|x86
 		Debug-Raylib|x64 = Debug-Raylib|x64
 		Debug-Raylib|x86 = Debug-Raylib|x86
+		Debug-SDL|x64 = Debug-SDL|x64
+		Debug-SDL|x86 = Debug-SDL|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -23,6 +25,10 @@ Global
 		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Debug-Raylib|x64.Build.0 = Debug-Raylib|x64
 		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Debug-Raylib|x86.ActiveCfg = Debug-Raylib|Win32
 		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Debug-Raylib|x86.Build.0 = Debug-Raylib|Win32
+		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Debug-SDL|x64.ActiveCfg = Debug-SDL|x64
+		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Debug-SDL|x64.Build.0 = Debug-SDL|x64
+		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Debug-SDL|x86.ActiveCfg = Debug-SDL|Win32
+		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Debug-SDL|x86.Build.0 = Debug-SDL|Win32
 		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Release|x64.ActiveCfg = Release|x64
 		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Release|x64.Build.0 = Release|x64
 		{362AE893-0FB7-4C50-8D41-AE6006A7711E}.Release|x86.ActiveCfg = Release|Win32

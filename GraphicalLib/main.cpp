@@ -7,7 +7,7 @@ int main(int argc, char** argv)
 	//app.Init(1200, 800, "Circle App", 10);
 	//app.Run();
 
-	DisplayMode dm = RAYLIB;
+	DisplayMode dm = SDL;
 	for (int i = 0; i < argc; i++) {
 		if (strcmp(argv[i], "-sdl") == 0) {
 			dm = SDL;

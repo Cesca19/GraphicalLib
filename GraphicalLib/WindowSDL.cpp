@@ -120,25 +120,9 @@ Event_t WindowSDL::PollEvents(Key_t& key)
 {
 	SDL_Event event;
 	key = Key_NONE;
-
-	while (SDL_PollEvent(&event)) {
-		switch (event.type) {
-		case SDL_QUIT:
-			mShouldClose = true;
-			key = Key_ESC;
-			return CLOSE;
-		case SDL_MOUSEBUTTONDOWN:
-			if (event.button.button == SDL_BUTTON_LEFT)
-				return MOUSE_LEFT_CLICK;
-			if (event.button.button == SDL_BUTTON_RIGHT)
-				return MOUSE_RIGHT_CLICK;
-			return NONE;
-		default:
-			return NONE;
-		}
-	}
-
+	SDL_PumpEvents();
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
+
 	if (keys[SDL_SCANCODE_LEFT]) {
 		key = _keyMap[SDLK_LEFT];
 	}
@@ -146,6 +130,21 @@ Event_t WindowSDL::PollEvents(Key_t& key)
 		key = _keyMap[SDLK_RIGHT];
 	}
 
+	while (SDL_PollEvent(&event)) {
+		switch (event.type) {
+		case SDL_QUIT:
+			mShouldClose = true;
+			key = Key_ESC;
+			return CLOSE;
+		// should not return NONE in default
+		// will cause a untreatement poll event
+		// and will make the app slow
+		//default:
+		//	return NONE;
+		}
+	}
+
+	return NONE;
 }
 
 void WindowSDL::WaitFrame() {
@@ -160,7 +159,7 @@ void WindowSDL::UpdateFPS() {
 	mFrameCount++;
 	Uint32 currentTime = SDL_GetTicks();
 
-	if (currentTime - mLastTime >= 1000) {
+	if (currentTime - mLastTime >= 100) {
 		mCurrentFPS = mFrameCount / ((currentTime - mLastTime) / 1000.0f);
 		mFrameCount = 0;
 		mLastTime = currentTime;
@@ -173,6 +172,7 @@ void WindowSDL::DrawFps() {
 	SDL_Color textColor = { 0, 0, 0, 255 };
 	char fpsText[16];
 	sprintf_s(fpsText, sizeof(fpsText), "FPS: %.1f", mCurrentFPS);
+	std::cout << mCurrentFPS << std::endl;
 
 	SDL_Surface* textSurface = TTF_RenderText_Solid(mFont, fpsText, textColor);
 	if (textSurface) {
