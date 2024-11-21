@@ -65,7 +65,7 @@ void WindowSDL::Init() {
 		std::cout << "Error initializing SDL_ttf: " << TTF_GetError() << std::endl;
 	}
 
-	mFont = TTF_OpenFont("font/GeistMono-Bold.ttf", 24); 
+	mFont = TTF_OpenFont("../Ressources/font/GeistMono-Bold.ttf", 24); 
 	if (!mFont) {
 		std::cout << "Error loading font: " << TTF_GetError() << std::endl;
 	}
